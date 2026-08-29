@@ -1,0 +1,2 @@
+export interface ScaffoldConfig {sourceDir:string;featuresDir:string;pagesDir:string;componentsDir:string;hooksDir:string;typesDir:string;language:'typescript';styling:'css-modules';namedExports:true;generateTests:boolean}
+export const defaultConfig: ScaffoldConfig={sourceDir:'src',featuresDir:'src/features',pagesDir:'src/pages',componentsDir:'src/components',hooksDir:'src/hooks',typesDir:'src/types',language:'typescript',styling:'css-modules',namedExports:true,generateTests:false};
