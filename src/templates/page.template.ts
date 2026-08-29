@@ -1,0 +1,1 @@
+export function pageTemplate(name:string,css=false):string{return `${css?`import styles from './${name}.module.css';\n\n`:''}export function ${name}() {\n  return <main${css?' className={styles.root}':''}>\n    <h1>${name.replace(/Page$/,'')}</h1>\n  </main>;\n}\n`}

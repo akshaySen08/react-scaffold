@@ -1,0 +1,2 @@
+import fs from 'node:fs/promises';import os from 'node:os';import path from 'node:path';import {defaultConfig} from '../src/config/config.types.js';
+export async function fixture(){const root=await fs.mkdtemp(path.join(os.tmpdir(),'react-scaffold-'));await fs.writeFile(path.join(root,'package.json'),JSON.stringify({dependencies:{react:'^19.0.0'},devDependencies:{vitest:'^2','@testing-library/react':'^16'}}));return root}export {defaultConfig};

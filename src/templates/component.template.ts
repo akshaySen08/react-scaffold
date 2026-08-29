@@ -1,0 +1,1 @@
+export function componentTemplate(name:string,css=false):string{return `${css?`import styles from './${name}.module.css';\n\n`:''}export interface ${name}Props {\n  className?: string;\n}\n\nexport function ${name}({ className }: ${name}Props) {\n  return <div${css?` className={[styles.root, className].filter(Boolean).join(' ')}`:` className={className}`}>${name}</div>;\n}\n`}

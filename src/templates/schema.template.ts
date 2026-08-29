@@ -1,0 +1,1 @@
+export function schemaTemplate(name:string):string{return `export interface ${name}Input {\n  id: string;\n}\n\nexport function is${name}Input(value: unknown): value is ${name}Input {\n  return typeof value === 'object' && value !== null && typeof (value as { id?: unknown }).id === 'string';\n}\n`}

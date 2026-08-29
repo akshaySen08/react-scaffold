@@ -1,0 +1,1 @@
+export function apiTemplate(name:string):string{return `export async function fetch${name}(): Promise<unknown> {\n  // Connect this function to the project's HTTP client.\n  throw new Error('Not implemented');\n}\n`}

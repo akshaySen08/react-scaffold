@@ -1,0 +1,1 @@
+export function testTemplate(name:string):string{return `import { render, screen } from '@testing-library/react';\nimport { describe, expect, it } from 'vitest';\nimport { ${name} } from './${name}';\n\ndescribe('${name}', () => {\n  it('renders', () => {\n    render(<${name} />);\n    expect(screen.getByText('${name.replace(/Page$/,'')}')).toBeTruthy();\n  });\n});\n`}

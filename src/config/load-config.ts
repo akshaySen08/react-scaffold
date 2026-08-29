@@ -1,0 +1,2 @@
+import fs from 'node:fs/promises';import path from 'node:path';import {defaultConfig,type ScaffoldConfig} from './config.types.js';
+export async function loadConfig(root:string):Promise<{config:ScaffoldConfig;found:boolean}>{try{const raw=JSON.parse(await fs.readFile(path.join(root,'.react-scaffold.json'),'utf8'));return {config:{...defaultConfig,...raw},found:true}}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return {config:{...defaultConfig},found:false};throw new Error('Invalid .react-scaffold.json. Fix its JSON and try again.')}}
