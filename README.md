@@ -21,9 +21,9 @@ Run commands inside a React project. Missing information is prompted interactive
 
 ```bash
 react-scaffold init
-react-scaffold feature [name] [--folders api,components,hooks,schemas,types] [--component Name] [--hook name] [--type Name] [--api] [--schema]
-react-scaffold page [name] [--css] [--test]
-react-scaffold component [name] [--feature name | --ui | --layout] [--css] [--test]
+react-scaffold feature [name] [--folders api,components,hooks,schemas,types] [--component Name] [--hook name] [--type Name] [--api | --no-api] [--schema | --no-schema] [--css | --no-css] [--test | --no-test]
+react-scaffold page [name] [--css | --no-css] [--test | --no-test]
+react-scaffold component [name] [--feature name | --ui | --layout] [--css | --no-css] [--test | --no-test]
 react-scaffold hook [name] [--feature name | --shared]
 react-scaffold type [name] [--feature name | --shared]
 ```

@@ -1,6 +1,7 @@
 import path from 'node:path';
-export function validateName(value:string):void {if(!value.trim()||path.isAbsolute(value)||value==='.'||value==='..'||value.includes('..')||/[\\/\0]/.test(value)) throw new Error(`Invalid name "${value}": use words only; paths and traversal are not allowed.`)}
-function words(input:string):string[]{validateName(input); return input.trim().replace(/([a-z0-9])([A-Z])/g,'$1 $2').replace(/[^A-Za-z0-9]+/g,' ').trim().split(/\s+/).filter(Boolean).map(x=>x.toLowerCase())}
+function normalizedWords(value:string):string[]{return value.trim().replace(/([a-z0-9])([A-Z])/g,'$1 $2').replace(/[^A-Za-z0-9]+/g,' ').trim().split(/\s+/).filter(Boolean)}
+export function validateName(value:string):void {const ws=normalizedWords(value);if(!value.trim()||path.isAbsolute(value)||value==='.'||value==='..'||value.includes('..')||/[\\/\0]/.test(value)||!ws.length||!/^[A-Za-z]/.test(ws[0]!)) throw new Error(`Invalid name "${value}": use words that normalize to a TypeScript identifier starting with a letter; paths and traversal are not allowed.`)}
+function words(input:string):string[]{validateName(input);return normalizedWords(input).map(x=>x.toLowerCase())}
 export const kebabCase=(v:string)=>words(v).join('-');
 export const pascalCase=(v:string)=>words(v).map(x=>x[0]!.toUpperCase()+x.slice(1)).join('');
 export const camelCase=(v:string)=>{const p=pascalCase(v);return p[0]!.toLowerCase()+p.slice(1)};
